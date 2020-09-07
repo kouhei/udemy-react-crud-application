@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
+  const profiles = [
+    { id:1, name: "Taro", age:10 },
+    { id:2, name: "Hanako", age:5 }
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {profiles.map((profile, i)=> <User name={profile.name} age={profile.age} key={i}/>)}
+      <User/>
     </div>
   );
 }
+
+const User = (props)=>{
+  return (<div>Hi, I am {props.name}, and {props.age} years old!</div>);
+}
+User.defaultProps = {name:"noname",age:1};
 
 export default App;
